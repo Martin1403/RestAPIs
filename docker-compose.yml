@@ -9,7 +9,6 @@ volumes:
   graphqlquartapp:
   graphqlstarletteapp:
   quartapp:
-  quartpostgresapp:
 
 
 services:
@@ -85,19 +84,3 @@ services:
     volumes:
       - quartapp:/quartapp
     restart: always
-  quartpostgresapp-service:
-    container_name: quartpostgresapp
-    build:
-      context: ./quartpostgresapp
-    ports:
-      - "5008:5008"
-    tty: true
-    environment:
-      - DATABASE_HOSTNAME=postgres
-      - DATABASE_PORT=5432
-      - DATABASE_PASSWORD=password
-  database:
-    image: postgres
-    restart: always
-    environment:
-      POSTRGRES_PASSWORD: password
