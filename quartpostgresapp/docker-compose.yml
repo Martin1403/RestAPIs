@@ -5,14 +5,17 @@ services:
     build:
       context: .
     ports:
-      - "5008:5008"
+      - "5000:5000"
     tty: true
     environment:
       - DATABASE_HOSTNAME=postgres
       - DATABASE_PORT=5432
       - DATABASE_PASSWORD=password
+    restart: always
+    depends_on:
+      - database
   database:
     image: postgres
     restart: always
     environment:
-      POSTRGRES_PASSWORD: password
+      POSTGRES_PASSWORD: password

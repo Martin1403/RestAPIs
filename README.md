@@ -24,7 +24,14 @@ docker volume prune && \
 cd .. && \
 rm -r RestAPIs
 ```
+
 **Note:**
 Run all services, Ctrl-C to end, confirm delete ...
 
-######
+###### Help:
+```
+docker rmi $(docker images --format="{{.ID}}" | head -n 1) --force 
+docker rm $(docker ps -aq) --force
+docker network prune
+docker volume prune
+```
