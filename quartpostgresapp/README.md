@@ -32,6 +32,11 @@ export QUART_ENV=development && \
 quart init-db && \
 quart run -h "127.0.0.1" -p 5008
 ```
+### Docker compose:
+```
+docker-compose up --build
+```
+
 **Note:** Databases ...
 ```
 pip install databases[postgresql]

@@ -96,7 +96,7 @@ services:
     build:
       context: ./quartpostgresapp
     ports:
-      - "5000:5000"
+      - "5008:5008"
     volumes:
       - quartpostgresapp:/quartpostgresapp
     tty: true
