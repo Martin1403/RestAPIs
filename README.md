@@ -29,9 +29,10 @@ rm -r RestAPIs
 Run all services, Ctrl-C to end, confirm delete ...
 
 ###### Help:
+###### Delete first 5 images ( -n 5 ), all containers, volumes, networks. 
 ```
-docker rmi $(docker images --format="{{.ID}}" | head -n 1) --force 
-docker rm $(docker ps -aq) --force
-docker network prune
+docker rmi $(docker images --format="{{.ID}}" | head -n 1) --force && \
+docker rm $(docker ps -aq) --force && \
+docker network prune && \
 docker volume prune
 ```

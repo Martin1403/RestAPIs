@@ -1,4 +1,5 @@
 import asyncio
+import os
 from typing import Tuple, Optional, List
 from dataclasses import asdict
 
@@ -9,7 +10,8 @@ from quart_schema import QuartSchema, hide_route
 from quart_schema import validate_request, validate_response, validate_querystring
 
 app = Quart(__name__)
-app.config["DATABASE_URL"] = "postgresql://postgres:password@localhost:5432/postgres"
+port = "database" if os.environ.get("DOCKER") else "localhost"
+app.config["DATABASE_URL"] = f"postgresql://postgres:password@{port}:5432/postgres"
 
 QuartSchema(app)
 

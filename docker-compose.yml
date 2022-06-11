@@ -9,7 +9,7 @@ volumes:
   graphqlquartapp:
   graphqlstarletteapp:
   quartapp:
-
+  quartpostgresapp:
 
 services:
   aiohttpapp-service:
@@ -57,6 +57,8 @@ services:
     volumes:
       - graphqlflaskapp:/graphqlflaskapp
     restart: always
+
+  # graphql quart app
   graphqlquartapp-service:
     container_name: graphqlquartapp
     build:
@@ -66,6 +68,8 @@ services:
     volumes:
       - graphqlquartapp:/graphqlquartapp
     restart: always
+
+  # graphql starlette app
   graphqlstarletteapp-service:
     container_name: graphqlstarletteapp
     build:
@@ -75,6 +79,8 @@ services:
     volumes:
       - graphqlstarletteapp:/graphqlstarletteapp
     restart: always
+
+  # quart app
   quartapp-service:
     container_name: quartapp
     build:
@@ -84,3 +90,25 @@ services:
     volumes:
       - quartapp:/quartapp
     restart: always
+
+  # quart postgres app
+  quartpostgresapp-service:
+    build:
+      context: ./quartpostgresapp
+    ports:
+      - "5000:5000"
+    volumes:
+      - quartpostgresapp:/quartpostgresapp
+    tty: true
+    environment:
+      - DATABASE_HOSTNAME=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_PASSWORD=password
+    restart: always
+    depends_on:
+      - database
+  database:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password

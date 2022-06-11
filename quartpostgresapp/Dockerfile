@@ -10,9 +10,9 @@ RUN pip install -r $APP/requirements.txt
 COPY . /$APP
 
 # Settings:
+ENV DOCKER=1
 ENV QUART_APP=$APP.app:app
 ENV QUART_ENV=development
 EXPOSE 5000
-
 
 CMD quart init-db && quart run -h "0.0.0.0" -p 5000
