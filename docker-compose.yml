@@ -2,6 +2,7 @@ version: "3.8"
 
 volumes:
   aiohttp_app:
+  quart_postgres_app:
 
 services:
   prometheus:
@@ -23,3 +24,25 @@ services:
     restart: always
     depends_on:
       - prometheus
+
+  quart_postgres_app-service:
+    build:
+      context: ./quart_postgres_app
+    ports:
+      - "5008:5008"
+    volumes:
+      - quart_postgres_app:/quart_postgres_app
+    tty: true
+    environment:
+      - DATABASE_HOSTNAME=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_PASSWORD=password
+    restart: always
+    depends_on:
+      - database
+      - prometheus
+  database:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password

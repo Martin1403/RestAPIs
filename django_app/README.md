@@ -37,11 +37,11 @@ python manage.py migrate
 
   ```
 ### Docker:
-###### /djangoapp
+###### /django_app
 ```
-docker build -t djangoapp . && \
-docker run -it --rm -p 5001:5001 djangoapp && \
-docker rmi djangoapp --force
+docker build -t django_app . && \
+docker run -it --rm -p 5001:5001 django_app && \
+docker rmi django_app --force
 ```
 **Note:** 
 ###### Help:

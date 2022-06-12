@@ -37,9 +37,9 @@ adev runserver \
 ### Docker:
 ###### /aiohttp_app
 ```
-docker build -t aiohttpapp . && \
-docker run -it --rm -p 5000:5000 aiohttpapp && \
-docker rmi aiohttpapp --force
+docker build -t aiohttp_app . && \
+docker run -it --rm -p 5000:5000 aiohttp_app && \
+docker rmi aiohttp_app --force
 ```
 **Note:** Swagger file in config directory.
 ###### Help:
