@@ -1,7 +1,0 @@
-DROP TABLE IF EXISTS todos;
-CREATE TABLE todos (
-    id SERIAL PRIMARY KEY,
-    complete BOOLEAN NOT NULL DEFAULT FALSE,
-    size TEXT NOT NULL,
-    task TEXT NOT NULL
-);

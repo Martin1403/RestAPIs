@@ -1,114 +1,25 @@
 version: "3.8"
 
 volumes:
-  aiohttpapp:
-  djangoapp:
-  fastapiapp:
-  flaskapp:
-  graphqlflaskapp:
-  graphqlquartapp:
-  graphqlstarletteapp:
-  quartapp:
-  quartpostgresapp:
+  aiohttp_app:
 
 services:
-  aiohttpapp-service:
-    container_name: aiohttpapp
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    restart: always
+
+  aiohttp_app-service:
+    container_name: aiohttp_app
     build:
-      context: ./aiohttpapp
+      context: ./aiohttp_app
     ports:
       - "5000:5000"
     volumes:
-      - aiohttpapp:/aiohttpapp
-    restart: always
-  djangoapp-service:
-    container_name: djangoapp
-    build:
-      context: ./djangoapp
-    ports:
-      - "5001:5001"
-    volumes:
-      - djangoapp:/djangoapp
-    restart: always
-  fastapiapp-service:
-    container_name: fastapiapp
-    build:
-      context: ./fastapiapp
-    ports:
-      - "5002:5002"
-    volumes:
-      - fastapiapp:/fastapiapp
-    restart: always
-  flaskapp-service:
-    container_name: flaskapp
-    build:
-      context: ./flaskapp
-    ports:
-      - "5003:5003"
-    volumes:
-      - flaskapp:/flaskapp
-    restart: always
-  graphqlflaskapp-service:
-    container_name: graphqlflaskapp
-    build:
-      context: ./graphqlflaskapp
-    ports:
-      - "5004:5004"
-    volumes:
-      - graphqlflaskapp:/graphqlflaskapp
-    restart: always
-
-  # graphql quart app
-  graphqlquartapp-service:
-    container_name: graphqlquartapp
-    build:
-      context: ./graphqlquartapp
-    ports:
-      - "5005:5005"
-    volumes:
-      - graphqlquartapp:/graphqlquartapp
-    restart: always
-
-  # graphql starlette app
-  graphqlstarletteapp-service:
-    container_name: graphqlstarletteapp
-    build:
-      context: ./graphqlstarletteapp
-    ports:
-      - "5006:5006"
-    volumes:
-      - graphqlstarletteapp:/graphqlstarletteapp
-    restart: always
-
-  # quart app
-  quartapp-service:
-    container_name: quartapp
-    build:
-      context: ./quartapp
-    ports:
-      - "5007:5007"
-    volumes:
-      - quartapp:/quartapp
-    restart: always
-
-  # quart postgres app
-  quartpostgresapp-service:
-    build:
-      context: ./quartpostgresapp
-    ports:
-      - "5008:5008"
-    volumes:
-      - quartpostgresapp:/quartpostgresapp
-    tty: true
-    environment:
-      - DATABASE_HOSTNAME=postgres
-      - DATABASE_PORT=5432
-      - DATABASE_PASSWORD=password
+      - aiohttp_app:/aiohttp_app
     restart: always
     depends_on:
-      - database
-  database:
-    image: postgres
-    restart: always
-    environment:
-      POSTGRES_PASSWORD: password
+      - prometheus
