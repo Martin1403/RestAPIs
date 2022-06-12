@@ -1,0 +1,15 @@
+# prometheus.yml
+---
+global:
+  scrape_interval: 15s
+  external_labels:
+    monitor: 'quart-monitor'
+
+scrape_configs:
+  - job_name: 'prometheus'
+    scrape_interval: 10s
+    scrape_timeout: 5s
+    static_configs:
+      - targets: ['quart_app-service:5007']  # Replace with your app's IP address
+        labels:
+          group: 'quart'

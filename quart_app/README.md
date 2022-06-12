@@ -3,7 +3,7 @@ Quart app ![](static/images/logo.png)
 ![](static/images/screen.png)
 ### Venv:
 ###### python3.9
-###### /quartapp
+###### /quart_app
 ```
 python -m venv .venv && \
 source .venv/bin/activate && \
@@ -13,27 +13,53 @@ pip install -r requirements.txt
 ### Run:
 ###### /
 ```
-export QUART_APP=quartapp.app:app && \
+export QUART_APP=quart_app.app:app && \
 export QUART_ENV=development && \
 quart run -h "127.0.0.1" -p 5007
 ```
 ### Tests:
 ###### /
+- ###### Molotov:
+  ```
+  docker-compose up --build --detach && \
+  molotov molotov-scenarios.py \
+  --processes 5 \
+  --workers 10 \
+  --duration 60
+  ```
+  - **Note:** 
+    ```
+    rate(quart_active_requests[1m])
+    ```
+    - ###### [Link](http://localhost:9090/) Prometheus
+
 - ###### Test async:
     ````
-    export QUART_APP=quartapp.app:app && \
+    export QUART_APP=quart_app.app:app && \
     export QUART_ENV=development && \
     quart test-async
     ````
+- ###### Init database:
+    ````
+    export QUART_APP=quart_app.app:app && \
+    export QUART_ENV=development && \
+    quart init-db
+    ````
+- ###### Test data access layer:
+    ````
+    export QUART_APP=quart_app.app:app && \
+    export QUART_ENV=development && \
+    quart test-dal
+    ```` 
 ### Docker:
-###### /quartapp
+###### /quart_app
 ```
-docker build -t quartapp . && \
-docker run -it --rm -p 5007:5007 quartapp && \
-docker rmi quartapp --force
+docker build -t quart_app . && \
+docker run -it --rm -p 5007:5007 quart_app && \
+docker rmi quart_app --force
 ```
 **Note:** 
 ###### Help:
 - ###### / inside root directory or cd /xxx  
 ###### [Links:]()
-- ###### [Link]()
+- ###### [Link](https://prometheus.io/docs/prometheus/latest/querying/basics/) Prometheus queries
