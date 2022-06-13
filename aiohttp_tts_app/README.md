@@ -23,15 +23,13 @@ adev runserver ./aiohttp_tts_app \                                              
   --port 5000 \
   --livereload
 ```
-
-<audio controls src="static/samples/test.wav"></audio>
-
-
 ### Tests:
 ###### /
-- ######
-    ```
-    ```
+- ###### Audio sample
+  - ###### [Link](https://github.com/Martin1403/RestAPIs/blob/master/aiohttp_tts_app/static/samples/test.wav) Example generated audio...  
+  <audio controls src="static/samples/test.wav"></audio>
+
+
 ### Docker:
 ###### /aiohttp_tts_app
 ```

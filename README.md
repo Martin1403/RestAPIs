@@ -1,7 +1,7 @@
 REST-APIs
 =========
 ![](edrawmax.png)
-- ###### [Aiohttp rest api](https://github.com/Martin1403/RestAPIs/tree/master/aiohttp_tts_app) Simple api with Sqlite
+- ###### [Aiohttp rest api](https://github.com/Martin1403/RestAPIs/tree/master/aiohttp_tts_app) Aiohttp TTS api with Pytorch cpu
 - ###### [Django rest api](https://github.com/Martin1403/RestAPIs/tree/master/django_app) Simple api with Sqlite database
 - ###### [FastApi rest api](https://github.com/Martin1403/RestAPIs/tree/master/fastapi_app) Simple api with Sqlite database
 - ###### [Flask rest api](https://github.com/Martin1403/RestAPIs/tree/master/flask_app) Simple api with Sqlite database
