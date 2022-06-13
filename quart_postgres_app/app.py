@@ -135,7 +135,7 @@ async def startup() -> None:
 def init_db() -> None:
     async def _inner() -> None:
         db = await _create_db_connection()
-        with open("quartpostgresapp/schema.sql", "r") as file_:
+        with open("quart_postgres_app/schema.sql", "r") as file_:
             print("Table created.")
             for command in file_.read().split(";"):
                 await db.execute(command)

@@ -1,6 +1,8 @@
 version: "3.8"
 
 services:
+
+  # quart_postgres_app
   quart_postgres_app-service:
     build:
       context: .
@@ -14,15 +16,21 @@ services:
     restart: always
     depends_on:
       - database
+
+  # postgres
   database:
     image: postgres
+    ports:
+      - "5432:5432"
     restart: always
     environment:
       POSTGRES_PASSWORD: password
+
+  # pgadmin4
   pgadmin:
     image: dpage/pgadmin4
     ports:
-      - "80:80"
+      - "5555:80"
     environment:
       PGADMIN_DEFAULT_EMAIL: user@domain.com
-      PGADMIN_DEFAULT_PASSWORD: password
+      PGADMIN_DEFAULT_PASSWORD: 12345

@@ -1,7 +1,7 @@
 FROM python:3.9-slim
 
 # App name
-ARG APP="quartpostgresapp"
+ARG APP="quart_postgres_app"
 
 RUN mkdir $APP
 COPY requirements.txt $APP/requirements.txt

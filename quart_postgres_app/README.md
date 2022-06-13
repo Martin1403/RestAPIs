@@ -1,6 +1,7 @@
 REST API with Quart & Postgres ![](static/images/logo.png)
 ==============================
 ![](static/images/Swagger.png)
+![](static/images/pgadmin4.png)
 ### Venv:
 ###### python3.9
 ###### /quart_postgres_app
@@ -11,21 +12,19 @@ pip install -U pip && \
 pip install -r requirements.txt
 ```
 ### Run:
-###### /
-- ###### 1. )
+- ###### 1. ) /quart_postgres_app
 ```
 docker run -p5432:5432 --name some-postgres \
   -e POSTGRES_PASSWORD=password -d postgres
 ```
-- ###### 2. )
+- ###### 2. ) /quart_postgres_app
 ```
-docker pull dpage/pgadmin4
-docker run -it -p 80:80 \
-    -e 'PGADMIN_DEFAULT_EMAIL=user@domain.com' \
-    -e 'PGADMIN_DEFAULT_PASSWORD=password' \
+docker run -p 5555:80 --name pgadmin \
+    -e PGADMIN_DEFAULT_EMAIL="user@domain.com" \
+    -e PGADMIN_DEFAULT_PASSWORD="12345" \
     -d dpage/pgadmin4
 ```
-- ###### 3. )
+- ###### 3. ) /
 ```
 export QUART_APP=quart_postgres_app.app:app && \
 export QUART_ENV=development && \

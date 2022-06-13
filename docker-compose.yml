@@ -1,10 +1,23 @@
 version: "3.8"
 
 volumes:
-  aiohttp_app:
+  aiohttp_tts_app:
+  quart_app:
   quart_postgres_app:
 
 services:
+
+  # aiohttp_tts_app
+  aiohttp_tts_app-service:
+    container_name: aiohttp_tts_app
+    build:
+      context: ./aiohttp_tts_app
+    ports:
+      - "5000:5000"
+    volumes:
+      - aiohttp_tts_app:/aiohttp_tts_app
+    restart: always
+
   # quart_app
   quart_app-service:
     container_name: quart_app
@@ -19,21 +32,34 @@ services:
   # quart_postgres_app
   quart_postgres_app-service:
     build:
-      context: ./quart_postgres_app
+      context: .
     ports:
       - "5008:5008"
-    volumes:
-      - quart_postgres_app:/quart_postgres_app
     tty: true
     environment:
       - DATABASE_HOSTNAME=postgres
       - DATABASE_PORT=5432
       - DATABASE_PASSWORD=password
     restart: always
+    volumes:
+      - quart_postgres_app:/quart_postgres_app
     depends_on:
       - database
+
+  # postgres
   database:
     image: postgres
+    ports:
+      - "5432:5432"
     restart: always
     environment:
       POSTGRES_PASSWORD: password
+
+  # pgadmin4
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - "5555:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user@domain.com
+      PGADMIN_DEFAULT_PASSWORD: 12345
