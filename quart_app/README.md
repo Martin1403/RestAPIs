@@ -23,6 +23,7 @@ quart run -h "127.0.0.1" -p 5007
 - ###### Molotov:
   ```
   docker-compose up --build --detach && \
+  sleep 5 && \
   molotov molotov-scenarios.py \
   --processes 5 \
   --workers 2 \
