@@ -10,13 +10,14 @@ from quart_app.api.models import async_session, User, Post, engine
 
 
 class UserDAL(object):
-    """User Data Access Layer"""
+    """Data access layer"""
+
     def __init__(self, session):
         self.db_session = session
 
-    async def create_user(self, input):
+    async def create_user(self, data):
         try:
-            user = User(**input)
+            user = User(**data)
             self.db_session.add(user)
             await self.db_session.flush()
             return user
@@ -25,7 +26,7 @@ class UserDAL(object):
 
     async def get_users(self):
         result = await self.db_session.execute(select(User).order_by(User.id))
-        return [user for user in result.scalars().all()]
+        return [user.json() for user in result.scalars().all()]
 
     async def get_user_id(self, id):
         try:
@@ -42,10 +43,10 @@ class UserDAL(object):
         try:
             user = await self.get_user_id(data.get("id"))
             if isinstance(user, User):
-                user.username = data.get("username")
-                user.password_hash = generate_password_hash(data.get("password"))
-                user.email = data.get("email")
-                user.picture = data.get("picture")
+                user.username = data.get("username") or user.username
+                user.password_hash = generate_password_hash(data.get("password")) or user.password_hash
+                user.email = data.get("email") or user.email
+                user.picture = data.get("picture") or user.picture
                 await self.db_session.commit()
                 return user
             else:
@@ -74,11 +75,11 @@ class PostDAL(object):
 
     async def get_posts_user_id(self, user_id):
         result = await self.db_session.execute(select(Post).where(Post.userId == user_id))
-        return [post for post in result.scalars().all()]
+        return [post.json() for post in result.scalars().all()]
 
     async def create_post_user_id(self, user_id, text):
+        post = Post(user_id=user_id, text=text)
         try:
-            post = Post(user_id=user_id, text=text)
             if isinstance(post, Post):
                 self.db_session.add(post)
                 await self.db_session.commit()
@@ -86,7 +87,7 @@ class PostDAL(object):
             else:
                 return None
         except (IntegrityError, OperationalError, InvalidRequestError, StaleDataError):
-            return None
+            return post
 
     async def get_post_id(self, id):
         try:

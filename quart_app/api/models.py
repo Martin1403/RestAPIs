@@ -35,7 +35,7 @@ class User(Base):
     email = Column(String(64), unique=True, nullable=False)
     password_hash = Column(String, unique=False, nullable=False)
     picture = Column(String, nullable=False, default="user.png")
-    date = Column(Date, nullable=False, default=generate_time)
+    date = Column(String, nullable=False, default=generate_time)
 
     __mapper_args__ = {
         "eager_defaults": True,

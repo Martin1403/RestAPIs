@@ -24,8 +24,8 @@ quart run -h "127.0.0.1" -p 5007
   docker-compose up --build --detach && \
   molotov molotov-scenarios.py \
   --processes 5 \
-  --workers 10 \
-  --duration 60
+  --workers 2 \
+  --duration 10
   ```
   - **Note:** 
     ```

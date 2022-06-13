@@ -10,7 +10,7 @@ from quart_app.api.dal import user_dal, post_dal
 
 # APP SETTINGS
 app = Quart(__name__)
-QuartSchema(app, title="APP", version="0.0.1")
+QuartSchema(app, title="QUART APP", version="0.0.1")
 
 # PROMETHEUS
 app.registry = Registry()
@@ -28,8 +28,11 @@ app.registry.register(app.request_timer)
 # REGISTER BLUEPRINTS
 from quart_app.api.routes.base import base_blueprint
 from quart_app.api.routes.posts import post_blueprint
+from quart_app.api.routes.users import user_blueprint
 app.register_blueprint(base_blueprint)
 app.register_blueprint(post_blueprint)
+app.register_blueprint(user_blueprint)
+
 
 # COMMANDS
 from quart_app.api.commands import test_async, init_db, test_dal

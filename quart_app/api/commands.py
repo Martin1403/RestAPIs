@@ -57,15 +57,15 @@ async def test_dal():
     click.echo(users)
 
     async with user_dal() as ud:
-        id = await ud.get_user_id(choice(users).id)
+        id = await ud.get_user_id(choice(users).get('id'))
     click.echo(id)
 
     async with post_dal() as pd:
-        post = await pd.create_post_user_id(user_id=choice(users).id, text=text(10))
+        post = await pd.create_post_user_id(user_id=choice(users).get('id'), text=text(10))
     click.echo(post)
 
     async with post_dal() as pd:
-        posts = await pd.get_posts_user_id(user_id=choice(users).id)
+        posts = await pd.get_posts_user_id(user_id=choice(users).get('id'))
     click.echo(posts)
 
     async with post_dal() as pd:

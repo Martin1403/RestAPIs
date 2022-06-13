@@ -21,21 +21,3 @@ async def index():
 async def handle_metrics():
     return render(app.registry, request.headers.getlist("accept"))
 
-
-@dataclass
-class ToDoSchema:
-    text: str
-
-
-@app.route("/get")
-@validate_response(ToDoSchema)
-async def get():
-    return ToDoSchema(text="HelloWorld!!!")
-
-
-@app.route("/post", methods=["POST"])
-@validate_request(ToDoSchema)
-@validate_response(ToDoSchema)
-@action_endpoint
-async def post(data: ToDoSchema):
-    return data

@@ -12,7 +12,7 @@ services:
       - "9090:9090"
     restart: always
 
-  testapp-service:
+  quart_app-service:
     container_name: quart_app-service
     build:
       context: .
