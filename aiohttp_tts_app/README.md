@@ -24,6 +24,9 @@ adev runserver ./aiohttp_tts_app \                                              
   --livereload
 ```
 
+<audio controls src="static/samples/test.wav"></audio>
+
+
 ### Tests:
 ###### /
 - ######
