@@ -1,11 +1,11 @@
 version: "3.8"
 
 services:
-  quartpostgresapp-service:
+  quart_postgres_app-service:
     build:
       context: .
     ports:
-      - "5000:5000"
+      - "5008:5008"
     tty: true
     environment:
       - DATABASE_HOSTNAME=postgres
@@ -19,3 +19,10 @@ services:
     restart: always
     environment:
       POSTGRES_PASSWORD: password
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - "80:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user@domain.com
+      PGADMIN_DEFAULT_PASSWORD: password

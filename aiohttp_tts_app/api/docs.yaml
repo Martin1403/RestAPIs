@@ -1,0 +1,50 @@
+openapi: 3.0.1
+info:
+  title: Aiohttp TTS Api
+  description: python-swagger-ui test api
+  version: 1.0.0
+servers:
+- url: http://127.0.0.1:5000/
+tags:
+- name: default
+  description: default tag
+paths:
+  /tts:
+    post:
+      tags:
+        - TTS
+      summary: TTS
+      description: ""
+      requestBody:
+        description: Text to speech
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Input"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Output"
+
+components:
+  schemas:
+    Input:
+      type: "object"
+      properties:
+        text:
+          type: string
+          description: Input text
+        write:
+          example: false
+          type: boolean
+          description: Write data to disk
+    Output:
+      type: object
+      properties:
+        data:
+          type: string
+          description: Output data

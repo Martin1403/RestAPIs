@@ -3,7 +3,7 @@ REST API with Quart & Postgres ![](static/images/logo.png)
 ![](static/images/Swagger.png)
 ### Venv:
 ###### python3.9
-###### /quartpostgressapp
+###### /quart_postgres_app
 ```
 python -m venv .venv && \
 source .venv/bin/activate && \
@@ -20,14 +20,14 @@ docker run -p5432:5432 --name some-postgres \
 - ###### 2. )
 ```
 docker pull dpage/pgadmin4
-docker run -p 80:80 \
+docker run -it -p 80:80 \
     -e 'PGADMIN_DEFAULT_EMAIL=user@domain.com' \
     -e 'PGADMIN_DEFAULT_PASSWORD=password' \
     -d dpage/pgadmin4
 ```
 - ###### 3. )
 ```
-export QUART_APP=quartpostgresapp.app:app && \
+export QUART_APP=quart_postgres_app.app:app && \
 export QUART_ENV=development && \
 quart init-db && \
 quart run -h "127.0.0.1" -p 5008

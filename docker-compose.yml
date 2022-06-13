@@ -5,16 +5,18 @@ volumes:
   quart_postgres_app:
 
 services:
-  aiohttp_app-service:
-    container_name: aiohttp_app
+  # quart_app
+  quart_app-service:
+    container_name: quart_app
     build:
-      context: ./aiohttp_app
+      context: ./quart_app
     ports:
-      - "5000:5000"
+      - "5007:5007"
     volumes:
-      - aiohttp_app:/aiohttp_app
+      - quart_app:/quart_app
     restart: always
 
+  # quart_postgres_app
   quart_postgres_app-service:
     build:
       context: ./quart_postgres_app
@@ -30,7 +32,6 @@ services:
     restart: always
     depends_on:
       - database
-      - prometheus
   database:
     image: postgres
     restart: always
