@@ -1,6 +1,7 @@
 Quart app ![](static/images/logo.png)
 =========
 ![](static/images/screen.png)
+![](static/images/prometheus.png)
 ### Venv:
 ###### python3.9
 ###### /quart_app
@@ -25,7 +26,9 @@ quart run -h "127.0.0.1" -p 5007
   molotov molotov-scenarios.py \
   --processes 5 \
   --workers 2 \
-  --duration 10
+  --duration 600 && \
+  docker-compose down && \
+  docker rmi $(docker images --format="{{.ID}}" | head -n 1) --force
   ```
   - **Note:** 
     ```

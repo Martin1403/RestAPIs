@@ -9,7 +9,7 @@ REST-APIs
 - ###### [GraphQL Flask rest api](https://github.com/Martin1403/RestAPIs/tree/master/graphql_flask_app) Simple api with Sqlite database
 - ###### [GraphQL quart rest api](https://github.com/Martin1403/RestAPIs/tree/master/graphql_quart_app) Simple api with Sqlite database
 - ###### [GraphQL starlette rest api](https://github.com/Martin1403/RestAPIs/tree/master/graphql_starlette_app) Simple api
-- ###### [Quart rest api](https://github.com/Martin1403/RestAPIs/tree/master/quart_app) Simple api
+- ###### [READY] [Quart rest api](https://github.com/Martin1403/RestAPIs/tree/master/quart_app) Simple api with Sqlite database, prometheus and molotov test OK...
 - ###### [Quart rest api with postgres](https://github.com/Martin1403/RestAPIs/tree/master/quart_postgres_app) Simple api with postgres database
 
 
