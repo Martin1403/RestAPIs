@@ -34,6 +34,7 @@ quart run -h "127.0.0.1" -p 5007
     ```
     rate(quart_active_requests[1m])
     ```
+    - ###### [Link](http://localhost:5007/) Swagger UI
     - ###### [Link](http://localhost:9090/) Prometheus
 
 - ###### Test async:
