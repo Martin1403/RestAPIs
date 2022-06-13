@@ -15,7 +15,6 @@ pip install -r requirements.txt
 apt-get install p7zip-full
 7za x aiohttp_tts_app/voices/voices.7z.001 -oaiohttp_tts_app/voices/
 ```
-[Audio](https://github.com/Martin1403/RestAPIs/blob/master/aiohttp_tts_app/templates/base.html)
 ### Run:
 ###### /
 ```
@@ -25,36 +24,19 @@ adev runserver ./aiohttp_tts_app \                                              
   --livereload
 ```
 
-
-
-
-
-
-
-
-
 ### Tests:
 ###### /
-- ###### Molotov
+- ######
     ```
-    molotov molotov.py -p 4 -w 5 -d 60
     ```
-- ###### Init db
-    ```
-    python app.py --mode init
-    ```
-- ###### Test dal
-    ```
-    python app.py --mode dal
-    ```  
 ### Docker:
-###### /aiohttp_app
+###### /aiohttp_tts_app
 ```
-docker build -t aiohttp_app . && \
-docker run -it --rm -p 5000:5000 aiohttp_app && \
+docker build -t aiohttp_tts_app . && \
+docker run -it --rm -p 5000:5000 aiohttp_tts_app && \
 docker rmi aiohttp_app --force
 ```
-**Note:** Swagger file in config directory.
+**Note:** Swagger files in api directory.
 ###### Help:
 - ###### / inside root directory or cd /xxx  
 ###### [Links:]()
