@@ -4,12 +4,12 @@ Quart app ![](static/images/logo.png)
 ![](static/images/prometheus.png)
 ### Venv:
 ###### python3.9
-###### /quart_app
+###### /
 ```
-python -m venv .venv && \
-source .venv/bin/activate && \
+python -m venv quart_app/.venv && \
+source quart_app/.venv/bin/activate && \
 pip install -U pip && \
-pip install -r requirements.txt
+pip install -r quart_app/requirements.txt
 ```
 ### Run:
 ###### /

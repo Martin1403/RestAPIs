@@ -4,7 +4,6 @@ from pydantic.dataclasses import dataclass
 
 from aioprometheus import Gauge, Registry, Summary, inprogress, render, timer
 from quart_app.app import app
-from quart_app.api.actions import action_endpoint
 
 base_blueprint = Blueprint("base_blueprint", __name__)
 

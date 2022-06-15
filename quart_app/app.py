@@ -2,11 +2,9 @@ import asyncio
 from random import choice
 
 from aioprometheus import Gauge, Registry, Summary, inprogress, render, timer
-from quart import Quart, request, jsonify
-from quart_schema import QuartSchema, hide_route
+from quart import Quart
+from quart_schema import QuartSchema
 
-from quart_app.api.utils import text, password, email
-from quart_app.api.dal import user_dal, post_dal
 
 # APP SETTINGS
 app = Quart(__name__)

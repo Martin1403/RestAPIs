@@ -17,8 +17,8 @@ apt-get install p7zip-full
 ```
 ### Run:
 ###### /
-```
-adev runserver ./aiohttp_tts_app \                                                                           1 ⨯
+```shell
+adev runserver ./aiohttp_tts_app \
   --host "127.0.0.1" \
   --port 5000 \
   --livereload
@@ -40,5 +40,6 @@ docker rmi aiohttp_app --force
 **Note:** Swagger files in api directory.
 ###### Help:
 - ###### / inside root directory or cd /xxx  
-###### [Links:]()
-- ###### [Link]()
+###### [Links:]() 
+- ###### [Link](https://drive.google.com/drive/folders/10_ZNA4PxF3QtYrBBEwjAFQfnhH9E1yqY?usp=sharing) Download more voices
+- ###### [Link](https://github.com/rhasspy/larynx) GitHub link to Larynx

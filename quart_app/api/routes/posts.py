@@ -10,8 +10,7 @@ from pydantic.dataclasses import dataclass
 from aioprometheus import Gauge, Registry, Summary, inprogress, render, timer
 
 from quart_app.app import app
-from quart_app.api.actions import action_endpoint
-from quart_app.api.dal import post_dal, user_dal
+from quart_app.api.dal import post_dal
 
 post_blueprint = Blueprint("post_blueprint", __name__, url_prefix="/posts")
 
