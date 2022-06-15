@@ -1,9 +1,10 @@
-from aioprometheus import Gauge, Registry, Summary, inprogress, render, timer
-from quart import Blueprint, redirect
+from aioprometheus import render, timer, inprogress
+from quart import request, redirect, Blueprint
 from quart_schema import hide_route, validate_request, validate_response
 from pydantic.dataclasses import dataclass
 from quart_tts_app.api.actions import action_endpoint
 
+from quart_tts_app.app import app
 
 blueprint = Blueprint("blueprint", __name__)
 
@@ -30,6 +31,8 @@ class DataSchema:
 @blueprint.route("/tts", methods=["POST"])
 @validate_request(TextSchema)
 @validate_response(DataSchema)
+@timer(app.request_timer, labels={"path": "/tts"})
+@inprogress(app.api_requests_gauge, labels={"path": "/tts"})
 @action_endpoint
 async def post(data: TextSchema):
     """Text to speech.

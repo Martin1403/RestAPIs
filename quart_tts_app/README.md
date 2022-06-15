@@ -38,7 +38,17 @@ quart run -h "127.0.0.1" -p 5009
     --workers 2 \
     --duration 6
     ````  
-
+- ###### Molotov:
+  ```
+  docker-compose up --build --detach && \
+  sleep 5 && \
+  molotov molotov-scenarios.py \
+  --processes 5 \
+  --workers 2 \
+  --duration 600 && \
+  docker-compose down && \
+  docker rmi $(docker images --format="{{.ID}}" | head -n 1) --force
+  ```
 
 ### Docker:
 ###### /quart_tts_app
@@ -47,8 +57,12 @@ docker build -t quart_tts_app . && \
 docker run -it --rm -p 5009:5009 quart_tts_app && \
 docker rmi quart_tts_app --force
 ```
-**Note:** 
+**Note:**
+###### Prometheus command: rate(quart_active_requests[1m])
+
 ###### Help:
+```
+```
 - ###### / inside root directory or cd /xxx  
 ###### [Links:]() 
 - ###### [Link](https://drive.google.com/drive/folders/10_ZNA4PxF3QtYrBBEwjAFQfnhH9E1yqY?usp=sharing) Download more voices

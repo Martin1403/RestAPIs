@@ -2,16 +2,12 @@ import os
 import jinja2
 import aiohttp_jinja2
 from aiohttp import web
-from aiohttp_prometheus_exporter.handler import metrics
-from aiohttp_prometheus_exporter.middleware import prometheus_middleware_factory
 from swagger_ui import api_doc
 from aiohttp_tts_app.api.routes import routes
 
 
 # APP SETTINGS
 app = web.Application()
-app.middlewares.append(prometheus_middleware_factory())
-app.router.add_get("/metrics", metrics())
 
 
 # REGISTER BLUEPRINT

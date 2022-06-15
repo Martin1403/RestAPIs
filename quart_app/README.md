@@ -20,7 +20,7 @@ quart run -h "127.0.0.1" -p 5007
 ```
 ### Tests:
 ###### /
-- ###### Molotov:
+- ###### Molotov: 
   ```
   docker-compose up --build --detach && \
   sleep 5 && \

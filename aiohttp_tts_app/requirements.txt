@@ -4,7 +4,6 @@ aiofiles==0.8.0
 aiohttp==3.8.1
 aiohttp-devtools==1.0.post0
 aiohttp-jinja2==1.5
-aiohttp-prometheus-exporter==0.2.4
 aioprometheus==22.5.0
 aiosignal==1.2.0
 aiosqlite==0.17.0

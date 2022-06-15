@@ -1,6 +1,7 @@
 aiodogstatsd==0.16.0.post0
 aiofiles==0.8.0
 aiohttp==3.8.1
+aioprometheus==22.5.0
 aiosignal==1.2.0
 async-timeout==4.0.2
 attrs==21.4.0
@@ -48,6 +49,7 @@ networkx==2.8.3
 num2words==0.5.10
 numpy==1.22.4
 onnxruntime==1.10.0
+orjson==3.7.2
 phonemes2ids==1.0.0
 Pillow==9.1.1
 priority==2.0.0
@@ -61,6 +63,7 @@ python-pidfile==3.0.0
 pytz==2022.1
 pytz-deprecation-shim==0.1.0.post0
 PyYAML==6.0
+quantile-python==1.1
 quart==0.17.0
 Quart-CORS==0.5.0
 quart-schema==0.11.1
@@ -68,9 +71,6 @@ regex==2022.6.2
 six==1.16.0
 swagger-ui-py==21.9.28
 toml==0.10.2
-torch==1.8.1+cpu
-torchaudio==0.8.1
-torchvision==0.9.1+cpu
 tqdm==4.48.2
 typing-inspect==0.7.1
 typing_extensions==4.2.0

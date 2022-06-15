@@ -1,0 +1,32 @@
+version: "3.8"
+
+volumes:
+  quart_tts_app:
+
+networks:
+  quart_tts_app:
+
+services:
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+       quart_tts_app:
+    ports:
+      - "9090:9090"
+    restart: always
+
+  quart_tts_app-service:
+    container_name: quart_tts_app-service
+    build:
+      context: .
+    networks:
+       quart_tts_app:
+    ports:
+      - "5009:5009"
+    volumes:
+      - quart_tts_app:/quart_tts_app
+    restart: always
+    depends_on:
+      - prometheus

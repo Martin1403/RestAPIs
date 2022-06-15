@@ -84,7 +84,7 @@ async def create_post_handler(data):
 @validate_response(PostsSchema, status_code=200)
 @timer(app.request_timer, labels={"path": "/posts/posts"})
 @inprogress(app.api_requests_gauge, labels={"path": "/posts/posts"})
-async def cget_posts_user_id_handler(data):
+async def get_posts_user_id_handler(data):
     """Get Posts id
     The function returns posts by user id.
     """

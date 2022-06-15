@@ -1,6 +1,6 @@
 import os
-from quart import Quart
-from quart_schema import QuartSchema
+from quart import Quart, request
+from quart_schema import QuartSchema, hide_route
 from aioprometheus import Gauge, Registry, Summary, inprogress, render, timer
 
 
@@ -20,6 +20,13 @@ app.request_timer = Summary(
 )
 app.registry.register(app.api_requests_gauge)
 app.registry.register(app.request_timer)
+
+
+@app.route("/metrics")
+@hide_route
+async def handle_metrics():
+    return render(app.registry, request.headers.getlist("accept"))
+
 
 # REGISTER BLUEPRINTS
 from quart_tts_app.api.views import blueprint
