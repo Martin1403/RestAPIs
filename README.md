@@ -11,6 +11,7 @@ REST-APIs
 - ###### [GraphQL starlette rest api](https://github.com/Martin1403/RestAPIs/tree/master/graphql_starlette_app) Simple api
 - ###### [Quart rest api](https://github.com/Martin1403/RestAPIs/tree/master/quart_app) Simple api with Sqlite database, prometheus and molotov.
 - ###### [Quart rest api with postgres](https://github.com/Martin1403/RestAPIs/tree/master/quart_postgres_app) Simple api with postgres database
+- ###### [Quart rest api with postgres & SqlAlchemy](https://github.com/Martin1403/RestAPIs/tree/master/quart_sqlalchemy_app) Simple api with SqlAlchemy & postgres database
 
 
 ### Run:

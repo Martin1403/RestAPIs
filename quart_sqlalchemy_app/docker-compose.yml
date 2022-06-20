@@ -1,0 +1,64 @@
+version: "3.8"
+
+volumes:
+  quart_sqlalchemy_app:
+
+networks:
+  quart_network:
+
+services:
+
+  quart_sqlalchemy_app-service:
+    container_name: quart_sqlalchemy_app-service-c
+    build:
+      context: .
+    networks:
+      quart_network:
+    ports:
+      - "5010:5010"
+    tty: true
+    environment:
+      - DATABASE_HOSTNAME=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_PASSWORD=password
+    restart: always
+    volumes:
+      - quart_sqlalchemy_app:/quart_sqlalchemy_app
+    depends_on:
+      - database
+      - prometheus
+
+  database:
+    networks:
+      quart_network:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    restart: always
+
+  pgadmin:
+    image: dpage/pgadmin4
+    networks:
+      quart_network:
+    ports:
+      - "5555:80"
+    environment:
+      PGADMIN_LISTEN_ADDRESS: 0.0.0.0
+      PGADMIN_DEFAULT_EMAIL: user@domain.com
+      PGADMIN_DEFAULT_PASSWORD: 12345
+    depends_on:
+      - database
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      quart_network:
+    ports:
+      - "9090:9090"
+    restart: always
